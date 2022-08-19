@@ -1,0 +1,32 @@
+name: "Deploy to balena"
+branding:
+  color: "green"
+  icon: "upload-cloud"
+description: "Deploy to balena environments"
+inputs:
+  token:
+    description: "Balena API token"
+    required: true
+  fleet:
+    description: "Balena fleet"
+    required: true
+  organization:
+    description: "Balena organization to deploy to"
+    required: true
+  type:
+    description: "Balena fleet device type"
+    required: true
+  contents:
+    description: "Relative path to application contents - default to current directory"
+    required: false
+  environment:
+    description: "Balena environment - defaults to balenaCloud"
+    required: false
+  draft:
+    description: "Set to yes to deploy as draft release"
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.balena_token }}
